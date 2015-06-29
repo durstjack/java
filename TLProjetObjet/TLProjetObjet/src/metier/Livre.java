@@ -50,7 +50,7 @@ public class Livre {
 		prix = 0;
 	*/
 	}
-	//on peut avoir plusieurs commentaires, comme pour les methodes si la signature n'est pas la même
+	//on peut avoir plusieurs constructeurs, comme pour les methodes si la signature n'est pas la même
 	// on rajoute this pour lever l'anbiguité avec la variable locale et l'attribut de l'objet
 	public Livre(String titre, String isbn, double prix){
 		System.out.println("Construction du livre........");
