@@ -1,4 +1,4 @@
-package ObjetsDeBase.metier;
+package ObjetsDeBase;
 
 public class Livre {
 	

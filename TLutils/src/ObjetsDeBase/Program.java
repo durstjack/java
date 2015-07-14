@@ -1,7 +1,7 @@
-package ObjetsDeBase.principal;
+package ObjetsDeBase;
 
 //import metier.Livre;
-import ObjetsDeBase.metier.*;
+
 
 public class Program {
 
