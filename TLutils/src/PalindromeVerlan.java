@@ -14,7 +14,7 @@ public class PalindromeVerlan {
 		int start = 0;
 		int end = chaine.length() - 1;
 		//on a "deux pointers", un au debut et un a la fin
-		//on les ccompare, puis on avance d un cran etc etc
+		//on les compare, puis on avance d un cran etc etc
 		while (start < end) {
 			if (chaine.charAt(start) != chaine.charAt(end))
 				return false;
