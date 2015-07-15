@@ -43,6 +43,24 @@ public class ClientsServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//quand on recoit la submission du formulaire
+		//bouton editer
+		
+		String action = request.getParameter("action");
+		
+		switch(action)
+		{
+		case "editer":
+			int ID = Integer.parseInt(request.getParameter("id"));
+			Clients client = clientsDAO.findClient(ID);
+			request.setAttribute("client", client);			
+			getServletContext().getRequestDispatcher("/editer-clients.jsp").forward(request, response);;
+		break;
+		
+	
+		}
+	
 
 	}
 

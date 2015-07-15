@@ -11,13 +11,20 @@
 <body>
 
 <table>
-<tr><th>Nom</th><th>email</th></tr>
+<tr><th>Nom</th><th>email</th><th>Actions</th></tr>
+
+
 <%
 	List<Clients> clients = (List<Clients>)request.getAttribute("clients");
 	
 	for(Clients c : clients){
 		
-		out.println("<tr><td>" + c.getNom() + "</td><td>" + c.getEmail() + "</td></tr>");
+		out.println("<tr><td>" + c.getNom() + "</td><td>" + c.getEmail() + "</td><td>" +
+				"<form action='ClientServlet' method='post'>" +
+				"<input type='hidden' name='id' value='" + c.getId() +"' />" +
+				"<input type='hidden' name='action' value='editer' />" +
+				"<input type='submit' value='edition' style='cursor: pointer;' />" +
+				"</form></td></tr>");
 		
 	}
 

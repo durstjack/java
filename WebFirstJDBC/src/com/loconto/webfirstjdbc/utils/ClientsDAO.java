@@ -14,12 +14,19 @@ public class ClientsDAO {
 	//requete preparées
 	public static final String FIND_ALL_SQL = "SELECT * FROM `clients`";
 	private PreparedStatement findAllStatement ;
+	
+	public static final String FIND_ONE_CLIENT = "SELECT * FROM `clients` WHERE `id` = ?";
+	private PreparedStatement findByIDStatement ;
 
 	//constructeur
 	public ClientsDAO(Connection base) {
 		this.base = base;
 		try {
+			//dans le try de ce constructeur
 			findAllStatement = base.prepareStatement(FIND_ALL_SQL);
+			findByIDStatement = base.prepareStatement(FIND_ONE_CLIENT);
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,10 +64,33 @@ public class ClientsDAO {
 					e.printStackTrace();
 				}
 			}
-		}
-		
+		}		
 		return datas;
 	}
+	
+	
+	public Clients findClient(int id){
+		Clients c = null;
+		try {
+			findByIDStatement.clearParameters();
+			findByIDStatement.setInt(1, id);
+			
+			ResultSet rs = findByIDStatement.executeQuery();
+			
+			if(rs.next()){
+				c = new Clients(rs.getInt("id"),
+						  rs.getString("nom"),
+						  rs.getString("email"),
+						  rs.getDouble("solde"));	
+			}
+
+			
+		} catch (SQLException e) { e.printStackTrace();	}
+		return c;
+		
+	}
+	
+	
 	
 
 }
