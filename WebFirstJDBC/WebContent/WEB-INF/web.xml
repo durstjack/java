@@ -15,7 +15,19 @@
 	  <param-name>driverclass</param-name>
 	  <param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
-  
+    <context-param>
+	  <param-name>databaseurl</param-name>
+	  <param-value>jdbc:mysql://localhost:3306/webfirstjdbc</param-value>
+  </context-param>
+      <context-param>
+	  <param-name>login</param-name>
+	  <param-value>root</param-value>
+  </context-param>
+      <context-param>
+	  <param-name>password</param-name>
+	  <param-value></param-value>
+  </context-param>
+   <!--  / fin des parametres pour la connexion a la base de donnees --> 
   
   <listener>
     <listener-class>com.loconto.webfirstjdbc.utils.DatabaseManager</listener-class>
