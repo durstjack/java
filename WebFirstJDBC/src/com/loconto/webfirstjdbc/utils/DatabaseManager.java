@@ -11,6 +11,10 @@ import javax.servlet.ServletContextListener;
  * Application Lifecycle Listener implementation class DatabaseManager
  *
  */
+
+//TOMCAT lance tout seul notre DataBaseManager grace a la declaration dans le web.xml
+//on va a l interieur de notre DataBaseManager instancier nos objets DAO
+//puis les mettre dans le contexte
 public class DatabaseManager implements ServletContextListener {
 
     private Connection base;
@@ -20,7 +24,8 @@ public class DatabaseManager implements ServletContextListener {
 
     }
 
-	// Initialisation de la WebApp - @see ServletContextListener#contextInitialized(ServletContextEvent)
+	// Initialisation de la WebApp
+    //@see ServletContextListener#contextInitialized(ServletContextEvent)
     public void contextInitialized(ServletContextEvent ce)  { 
          System.out.println("demarrage de DatabaseManager");
          String driverclass = ce.getServletContext().getInitParameter("driverclass");
@@ -34,6 +39,11 @@ public class DatabaseManager implements ServletContextListener {
 			Class.forName(driverclass); // charge la classe dont on donne le nom en parametre
 			base = DriverManager.getConnection(databaseurl, login, password);
 			System.out.println("connecté!!!!");
+			
+			//creation du client DAO
+			ClientsDAO clientDAO = new ClientsDAO(base);
+			//je met le clientDAO a disposition des servlets des JSP, des Listeners
+			ce.getServletContext().setAttribute("clientDAO", clientDAO);
 						
 		} 
          catch (ClassNotFoundException e) {
