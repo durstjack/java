@@ -23,17 +23,22 @@
 				"<form action='ClientsServlet' method='post'>" +
 				"<input type='hidden' name='id' value='" + c.getId() +"' />" +
 				"<input type='hidden' name='action' value='editer' />" +
-				"<input type='submit' value='edition' style='cursor: pointer;' />" +
+				"<input type='submit' name='bouton' value='edition' style='cursor: pointer;' />" +
+				"<input type='submit' name='bouton' value='supprimer' style='cursor: pointer;' />" +
 				"</form></td></tr>");
+		
 		
 	}
 
 
 %>
 
-
-
 </table>
+
+<form action="ClientsServlet" method="post">
+<input type="hidden" name="action" value="creer-client" />
+<input type="submit" value="créer" />
+</form>
 
 </body>
 </html>

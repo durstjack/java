@@ -21,8 +21,11 @@ public class ClientsDAO {
 	public static final String UPDATE_ONE_CLIENT = "UPDATE `clients` SET `nom` = ?, `email` = ?, `solde` = ? WHERE `id` = ?";
 	private PreparedStatement updateByIDStatement ;
 	
-	public static final String INSERT_ONE_CLIENT = "INSERT INTO `clients` (`nom`,`email`,`solde`) VALUES  = (?,?,?)";
+	public static final String INSERT_ONE_CLIENT = "INSERT INTO `clients` (`nom`,`email`,`solde`) VALUES(?,?,?)";
 	private PreparedStatement insertStatement ;
+	
+	public static final String DELETE_ONE_CLIENT = "DELETE FROM `clients` WHERE `id` = ? ";
+	private PreparedStatement deleteStatement ;
 
 	//constructeur
 	public ClientsDAO(Connection base) {
@@ -33,6 +36,7 @@ public class ClientsDAO {
 			findByIDStatement = base.prepareStatement(FIND_ONE_CLIENT);
 			updateByIDStatement = base.prepareStatement(UPDATE_ONE_CLIENT);
 			insertStatement = base.prepareStatement(INSERT_ONE_CLIENT);
+			deleteStatement = base.prepareStatement(DELETE_ONE_CLIENT);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,9 +123,39 @@ public class ClientsDAO {
 		//cas d'un insert
 		else{
 			
+			try {
+				insertStatement.clearParameters();
+				insertStatement.setString(1, c.getNom());
+				insertStatement.setString(2, c.getEmail());
+				insertStatement.setDouble(3, c.getSolde());
+
+				
+				return insertStatement.executeUpdate();//renvoi le nombre de lignes affectées
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		return 0;
 	}
+	
+	//methode qui modifie ou insert un client
+	//selectionne un client grace a son id	
+	public int delete(int id){
+		
+		try {
+			deleteStatement.clearParameters();
+			deleteStatement.setInt(1,id);
+			return deleteStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	
 	
 	
 

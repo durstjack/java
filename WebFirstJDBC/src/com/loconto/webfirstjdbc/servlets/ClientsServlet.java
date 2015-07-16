@@ -54,10 +54,16 @@ public class ClientsServlet extends HttpServlet {
 		{
 		case "editer":
 		//provient de de liste-clients.jsp
+			if(request.getParameter("bouton").equals("edition")){
+			
 			int ID = Integer.parseInt(request.getParameter("id"));
 			Clients client = clientsDAO.findClient(ID);
 			request.setAttribute("client", client);			
 			getServletContext().getRequestDispatcher("/editer-clients2.jsp").forward(request, response);
+			}
+			else if(request.getParameter("bouton").equals("edition")){
+				//todo
+			}
 			break;
 		
 		case "enregistrer":
@@ -70,6 +76,12 @@ public class ClientsServlet extends HttpServlet {
 			//genre refresh de la page etc
 			response.sendRedirect("ClientsServlet"); 
 			break;
+			
+		case "creer-client":
+			Clients clientTemp2 = new Clients(0,"noname","mail@sfr.fr", 100.0);
+			request.setAttribute("client", clientTemp2);			
+			getServletContext().getRequestDispatcher("/editer-clients2.jsp").forward(request, response);
+			break;	
 		
 	
 		}
