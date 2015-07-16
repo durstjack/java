@@ -24,11 +24,13 @@ public class ClientsServlet extends HttpServlet {
 
     }
 
-    //attention quand on redefinit la lmethode init
-    //eclipse oublie de mettre la reference au constructeur deu parent et cela poseer  probleme 
+    //attention quand on redefinit la methode init
+    //eclipse oublie de mettre la reference au constructeur parent et cela poser probleme 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		clientsDAO = (ClientsDAO)getServletContext().getAttribute("clientDAO");//on recupere le clientDAO mis dans le contexte
+		
+		//on recupere le clientDAO mis dans le contexte
+		clientsDAO = (ClientsDAO)getServletContext().getAttribute("clientDAO");
 	}
 
 
@@ -45,8 +47,7 @@ public class ClientsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//quand on recoit la submission du formulaire
-		//bouton editer
-		
+		//bouton editer		
 		String action = request.getParameter("action");
 		
 		switch(action)
@@ -57,7 +58,7 @@ public class ClientsServlet extends HttpServlet {
 			Clients client = clientsDAO.findClient(ID);
 			request.setAttribute("client", client);			
 			getServletContext().getRequestDispatcher("/editer-clients2.jsp").forward(request, response);
-		break;
+			break;
 		
 		case "enregistrer":
 			Clients clientTemp = new Clients(Integer.parseInt(request.getParameter("id")),
@@ -68,7 +69,7 @@ public class ClientsServlet extends HttpServlet {
 			//puis on renvoi une redirection http pour eviter les pb apres le save
 			//genre refresh de la page etc
 			response.sendRedirect("ClientsServlet"); 
-		break;
+			break;
 		
 	
 		}

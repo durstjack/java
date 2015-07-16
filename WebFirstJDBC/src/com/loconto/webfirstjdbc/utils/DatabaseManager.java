@@ -36,6 +36,7 @@ public class DatabaseManager implements ServletContextListener {
 			
 			//creation du client DAO
 			ClientsDAO clientDAO = new ClientsDAO(base);
+			
 			//je met le clientDAO a disposition des servlets des JSP, des Listeners
 			ce.getServletContext().setAttribute("clientDAO", clientDAO);
 						
