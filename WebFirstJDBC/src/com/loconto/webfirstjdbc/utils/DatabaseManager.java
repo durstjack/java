@@ -7,11 +7,6 @@ import java.sql.SQLException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-/**
- * Application Lifecycle Listener implementation class DatabaseManager
- *
- */
-
 //TOMCAT lance tout seul notre DataBaseManager grace a la declaration dans le web.xml
 //on va a l interieur de notre DataBaseManager instancier nos objets DAO
 //puis les mettre dans le contexte
@@ -19,7 +14,6 @@ public class DatabaseManager implements ServletContextListener {
 
     private Connection base;
 	
-	//constructor. 
     public DatabaseManager() {
 
     }

@@ -14,6 +14,7 @@
 <%! 
 	int compteur = 0;
 	
+	//fonction inverse() - inverse un mot
 	private String inverse(String message){
 	StringBuilder sb = new StringBuilder();
 	for(int i = message.length() - 1; i>=0; i--){
