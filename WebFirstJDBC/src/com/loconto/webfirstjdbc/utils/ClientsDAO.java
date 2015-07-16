@@ -11,21 +11,28 @@ public class ClientsDAO {
 	
 	private Connection base;
 	
-	//requete preparées
+	//requete preparées et attributs de ClientsDAO
 	public static final String FIND_ALL_SQL = "SELECT * FROM `clients`";
 	private PreparedStatement findAllStatement ;
 	
 	public static final String FIND_ONE_CLIENT = "SELECT * FROM `clients` WHERE `id` = ?";
 	private PreparedStatement findByIDStatement ;
+	
+	public static final String UPDATE_ONE_CLIENT = "UPDATE `clients` SET `nom` = ?, `email` = ?, `solde` = ? WHERE `id` = ?";
+	private PreparedStatement updateByIDStatement ;
+	
+	public static final String INSERT_ONE_CLIENT = "INSERT INTO `clients` (`nom`,`email`,`solde`) VALUES  = (?,?,?)";
+	private PreparedStatement insertStatement ;
 
 	//constructeur
 	public ClientsDAO(Connection base) {
 		this.base = base;
 		try {
-			//dans le try de ce constructeur
+			//dans le try de ce constructeur, on prepare et on affecte dans des variables nos requetes
 			findAllStatement = base.prepareStatement(FIND_ALL_SQL);
 			findByIDStatement = base.prepareStatement(FIND_ONE_CLIENT);
-			
+			updateByIDStatement = base.prepareStatement(UPDATE_ONE_CLIENT);
+			insertStatement = base.prepareStatement(INSERT_ONE_CLIENT);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,7 +75,8 @@ public class ClientsDAO {
 		return datas;
 	}
 	
-	
+	//methode qui renvoi un client
+	//selectionne un client grace a son id
 	public Clients findClient(int id){
 		Clients c = null;
 		try {
@@ -89,7 +97,31 @@ public class ClientsDAO {
 		return c;
 		
 	}
-	
+	//methode qui modifie ou insert un client
+	//selectionne un client grace a son id	
+	public int  save(Clients c){
+		//cas d'un update
+		if (c.getId() >0){
+			try {
+				updateByIDStatement.clearParameters();
+				updateByIDStatement.setString(1, c.getNom());
+				updateByIDStatement.setString(2, c.getEmail());
+				updateByIDStatement.setDouble(3, c.getSolde());
+				updateByIDStatement.setDouble(4, c.getId());
+				
+				return updateByIDStatement.executeUpdate();//renvoi le nombre de lignes affectées
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		//cas d'un insert
+		else{
+			
+		}
+		return 0;
+	}
 	
 	
 

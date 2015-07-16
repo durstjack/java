@@ -52,10 +52,22 @@ public class ClientsServlet extends HttpServlet {
 		switch(action)
 		{
 		case "editer":
+		//provient de de liste-clients.jsp
 			int ID = Integer.parseInt(request.getParameter("id"));
 			Clients client = clientsDAO.findClient(ID);
 			request.setAttribute("client", client);			
-			getServletContext().getRequestDispatcher("/editer-clients.jsp").forward(request, response);;
+			getServletContext().getRequestDispatcher("/editer-clients2.jsp").forward(request, response);
+		break;
+		
+		case "enregistrer":
+			Clients clientTemp = new Clients(Integer.parseInt(request.getParameter("id")),
+																(request.getParameter("nom")),
+																(request.getParameter("email")),
+																Double.parseDouble(request.getParameter("solde")));
+			clientsDAO.save(clientTemp);
+			//puis on renvoi une redirection http pour eviter les pb apres le save
+			//genre refresh de la page etc
+			response.sendRedirect("ClientsServlet"); 
 		break;
 		
 	
