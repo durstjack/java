@@ -23,7 +23,7 @@
 
 <table class="CSSTableGenerator">
 <tr><th>ID</th>
-<th>libellé</th>
+<th><a href="IndexServlet/libelle">libellé</a></th>
 <th><a href="IndexServlet/prix">prix</a></th>
 <th><a href="IndexServlet/poids">poids</a></th>
 <th colspan=2>action</th></tr>

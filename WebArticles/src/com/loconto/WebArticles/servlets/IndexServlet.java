@@ -48,6 +48,9 @@ public class IndexServlet extends HttpServlet {
 				break;
 			case "poids":
 				choix = ArticleDAO.ORDER_BY_POIDS;
+				break;
+			case "libelle":
+				choix = ArticleDAO.ORDER_BY_LIBELLE;
 				break;	
 			
 			}

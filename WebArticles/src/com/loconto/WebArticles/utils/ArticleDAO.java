@@ -16,10 +16,14 @@ public class ArticleDAO {
 	public static final int ORDER_BY_DEFAULT = 0;
 	public static final int ORDER_BY_PRIX = 1;
 	public static final int ORDER_BY_POIDS = 2;
+	public static final int ORDER_BY_LIBELLE = 3;
 
 	//requete preparées et attributs de ClientsDAO
 	public static final String FIND_ALL_SQL = "SELECT * FROM `articles`";
 	private PreparedStatement findAllStatement ;
+	
+	public static final String FIND_ALL_ORDERED_LIBELLE_SQL = "SELECT * FROM `articles` ORDER BY libelle";
+	private PreparedStatement findAllOrderedByLibelleStatement ;
 	
 	public static final String FIND_ALL_ORDERED_PRIX_SQL = "SELECT * FROM `articles` ORDER BY prix";
 	private PreparedStatement findAllOrderedByPrixStatement ;
@@ -51,7 +55,8 @@ public class ArticleDAO {
 			
 			findAllStatement = base.prepareStatement(FIND_ALL_SQL);
 			findAllOrderedByPoidsStatement = base.prepareStatement(FIND_ALL_ORDERED_POIDS_SQL);
-			findAllOrderedByPrixStatement = base.prepareStatement(FIND_ALL_ORDERED_PRIX_SQL);			
+			findAllOrderedByPrixStatement = base.prepareStatement(FIND_ALL_ORDERED_PRIX_SQL);
+			findAllOrderedByLibelleStatement = base.prepareStatement(FIND_ALL_ORDERED_LIBELLE_SQL);
 			
 			
 		} catch (SQLException e) {
@@ -88,7 +93,11 @@ public class ArticleDAO {
 			case ORDER_BY_PRIX:
 				findAllOrderedByPrixStatement.clearParameters();
 				stat = findAllOrderedByPrixStatement;
-				break;				
+				break;
+			case ORDER_BY_LIBELLE:
+				findAllOrderedByLibelleStatement.clearParameters();
+				stat = findAllOrderedByLibelleStatement;
+				break;	
 			
 			}		
 			
