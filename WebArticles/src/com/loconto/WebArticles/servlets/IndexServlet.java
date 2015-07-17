@@ -35,17 +35,24 @@ public class IndexServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("toto1");
-			List<Article> articles = articleDAO.findAll();
-			System.out.println("toto2");
+
+			//on recupere les url afin de voir si la requete get concerne un tri par prix ou par poids
+			String uri = request.getRequestURI();
+			String[] champs = uri.split("/");
+			String orderBy = champs[champs.length - 1];
 			
-			for(Article a : articles){
-				System.out.println("article avec ID: " + a.getId() );
-					
+			int choix = ArticleDAO.ORDER_BY_DEFAULT;
+			switch(orderBy){
+			case "prix":
+				choix = ArticleDAO.ORDER_BY_PRIX;
+				break;
+			case "poids":
+				choix = ArticleDAO.ORDER_BY_POIDS;
+				break;	
+			
 			}
-			
-			request.setAttribute("articles", articles);
-			
+			List<Article> articles = articleDAO.findAll(choix);
+			request.setAttribute("articles", articles);			
 			getServletContext().getRequestDispatcher("/liste-articles.jsp").forward(request, response);
 	}
 
