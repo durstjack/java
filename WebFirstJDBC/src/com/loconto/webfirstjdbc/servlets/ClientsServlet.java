@@ -54,15 +54,16 @@ public class ClientsServlet extends HttpServlet {
 		{
 		case "editer":
 		//provient de de liste-clients.jsp
-			if(request.getParameter("bouton").equals("edition")){
-			
+			if(request.getParameter("bouton").equals("edition")){			
 			int ID = Integer.parseInt(request.getParameter("id"));
 			Clients client = clientsDAO.findClient(ID);
 			request.setAttribute("client", client);			
 			getServletContext().getRequestDispatcher("/editer-clients2.jsp").forward(request, response);
 			}
-			else if(request.getParameter("bouton").equals("edition")){
-				//todo
+			else if(request.getParameter("bouton").equals("supprimer")){
+				int cid = Integer.parseInt(request.getParameter("id"));
+				clientsDAO.delete(cid);
+				response.sendRedirect("ClientsServlet");	
 			}
 			break;
 		

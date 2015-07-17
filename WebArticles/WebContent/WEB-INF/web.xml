@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>WebFirstJDBC</display-name>
+  <display-name>WebArticles</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -15,7 +15,7 @@
   </context-param>
   <context-param>
     <param-name>databaseurl</param-name>
-    <param-value>jdbc:mysql://localhost:3306/webfirstjdbc</param-value>
+    <param-value>jdbc:mysql://localhost:3306/bddarticles</param-value>
   </context-param>
   <context-param>
     <param-name>login</param-name>
@@ -26,24 +26,13 @@
     <param-value></param-value>
   </context-param>
   <listener>
-    <listener-class>com.loconto.webfirstjdbc.utils.DatabaseManager</listener-class>
+    <listener-class>com.loconto.WebArticles.utils.DatabaseManager</listener-class>
   </listener>
-  <servlet>
-    <description></description>
-    <display-name>ClientsServlet</display-name>
-    <servlet-name>ClientsServlet</servlet-name>
-    <servlet-class>com.loconto.webfirstjdbc.servlets.ClientsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ClientsServlet</servlet-name>
-    <url-pattern>/ClientsServlet</url-pattern>
-    <url-pattern>/Accueil</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>IndexServlet</display-name>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>com.loconto.webfirstjdbc.servlet.IndexServlet</servlet-class>
+    <servlet-class>com.loconto.WebArticles.servlets.IndexServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>

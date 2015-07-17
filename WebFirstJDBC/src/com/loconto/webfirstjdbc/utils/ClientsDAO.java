@@ -1,9 +1,11 @@
 package com.loconto.webfirstjdbc.utils;
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import com.loconto.webfirstjdbc.beans.*;
+
 
 //classe de DataAccessObjet Clients, 
 //les objets serviront à faire le lien entre la WebApp et la Base de données
