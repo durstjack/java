@@ -19,7 +19,7 @@
 
 <body style="width: 90%; margin: 20px auto;">
 
-<h2>Bienvenue sur notre catalogue de produit</h2>
+<h2>Edition d'un produit</h2>
 
 <table class="CSSTableGenerator">
 <tr><th>ID</th>
@@ -27,26 +27,22 @@
 <th><a href="IndexServlet/prix">prix</a></th>
 <th><a href="IndexServlet/poids">poids</a></th>
 <th colspan=2>action</th></tr>
-
-
 <%
-	List<Article> articles = (List<Article>)request.getAttribute("articles");
-	
-	for(Article a : articles){
+	Article a = (Article)request.getAttribute("article");	
 %>
 
 		<tr>
-		<td> <%= a.getId() %></td>
-		<td> <%= a.getLibelle() %></td>
-		<td> <%= a.getPrix() %> €</td>
-		<td> <%= a.getPoids() %> Kg </td>
-		<td>
 		<form action="IndexServlet" method="post">
-			<input type="hidden" name="action" value="editer" />
+		<td><input type="text" value="<%= a.getId() %>" disabled /></td>
+		<td> <input type="text" name="libelle" value="<%= a.getLibelle() %>" /></td>
+		<td><input type="text" name="prix" value="<%= a.getPrix() %>" /> € </td>
+		<td><input type="text" name="poids" value="<%= a.getPoids() %>" /> Kg </td>
+		<td>
+			<input type="hidden" name="action" value="sauver" />
 			<input type="hidden" name="id" value="<%= a.getId() %>" />
-			<input type="submit" value="editer" style="cursor: pointer;"/>
-		</form>
+			<input type="submit" value="sauver" style="cursor: pointer;"/>
 		</td>
+		</form>
 		<td>
 		<form action="IndexServlet" method="post">
 			<input type="hidden" name="action" value="supprimer" />
@@ -54,25 +50,10 @@
 			<input type="submit" value="supprimer" style="cursor: pointer;" />
 		</form>
 		</td>
-		</tr>
-
-
-<%
-	}
-
-%>		
-
-		
+		</tr>	
 		
 
 </table>
-<br/>
-<br/>
-<p style="text-align: right;">
-		<form action="IndexServlet" method="post">
-			<input type="hidden" name="action" value="creer" />
-			<input type="submit" value="creer un article" style="cursor: pointer;" />
-		</form>
-</p>
+
 </body>
 </html>

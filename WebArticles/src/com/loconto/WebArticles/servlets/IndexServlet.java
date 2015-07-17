@@ -61,7 +61,43 @@ public class IndexServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//quand on recoit la submission du formulaire
+		//bouton editer		
+		String action = request.getParameter("action");
+		switch(action)
+		{
+		case "editer":
+			
+			int ID = Integer.parseInt(request.getParameter("id"));
+			Article article = articleDAO.findByID(ID);
+			request.setAttribute("article", article);			
+			getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);			
+			break;
+		
+		case "sauver":			
+			Article a = new Article(Integer.parseInt(request.getParameter("id")),
+													request.getParameter("libelle"),
+													Double.parseDouble(request.getParameter("prix")),
+													Double.parseDouble(request.getParameter("poids")));
+			articleDAO.save(a);
+			response.sendRedirect("IndexServlet");
+			break;
+		case "creer":			
+			Article a2 = new Article();
+			request.setAttribute("article", a2);
+			getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);
+			
+			break;
+			
+		case "supprimer":
+			int idAsupp = Integer.parseInt(request.getParameter("id"));
+			articleDAO.delete(idAsupp);
+			response.sendRedirect("IndexServlet");
+			break;
+			
+		}
+		
+		
 	}
 
 }
