@@ -28,5 +28,15 @@
   	</attribute>
   </tag>
   
+  <tag>
+  	<name>jackpot</name>
+    <tag-class>com.loncoto.WebCustomTag.utils.Jackpot</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+    	<name>message</name>
+      	<required>true</required>
+  	</attribute>
+  </tag>
+  
   
 </taglib>

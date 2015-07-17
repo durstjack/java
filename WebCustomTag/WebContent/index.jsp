@@ -14,7 +14,7 @@
 <body>
 
 <my:hello />
-
+<my:jackpot message="ca marche"/>
 <my:selector keyProperty="id" items="articles" valueProperty="libelle"/>
 
 </body>
