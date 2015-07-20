@@ -69,7 +69,7 @@ public class Selector extends SimpleTagSupport {
 			Object value = mvalue.invoke(obj);
 			
 			
-			//ca y est !!
+			//ca y est !! construction des options
 			writer.println("<option value='" + key + "'>" + value + "</option>");
 			
 			
