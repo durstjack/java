@@ -47,6 +47,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener {
 			add(boutonSave);
 			
 			boutonOpen = new JButton("nouvelle fentere");
+			//pas this ici on ne peut avoir que 1 actionPerormed pour le listener this
+			//on met alors une fonction anonyme pour le bouton Open
 			boutonOpen.addActionListener(new ActionListener() {				
 				@Override
 				public void actionPerformed(ActionEvent e) {
