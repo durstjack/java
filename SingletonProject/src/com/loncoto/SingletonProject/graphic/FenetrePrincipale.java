@@ -1,17 +1,21 @@
 package com.loncoto.SingletonProject.graphic;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import com.loncoto.SingletonProject.config.ConfigurationManager;
 
-public class FenetrePrincipale extends JFrame {
+public class FenetrePrincipale extends JFrame implements ActionListener {
 
 		private JLabel label1;
 		private JLabel label2;
 		private JTextField champ1;
 		private JTextField champ2;
+		private JButton boutonSave;
+		private JButton boutonOpen;
 		
 		public FenetrePrincipale(){
 			//imaginons que le titre et le nom de l'application
@@ -38,6 +42,31 @@ public class FenetrePrincipale extends JFrame {
 			champ1.setText(ConfigurationManager.getInstance().getApplicationName());
 			champ2.setText(ConfigurationManager.getInstance().getApplicationVersion());
 			
+			boutonSave = new JButton("save config");
+			boutonSave.addActionListener(this);
+			add(boutonSave);
+			
+			boutonOpen = new JButton("nouvelle fentere");
+			boutonOpen.addActionListener(new ActionListener() {				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					FenetrePrincipale f = new FenetrePrincipale();
+					f.setVisible(true);
+					
+				}
+			});
+			add(boutonOpen);
+			
+			
+		}
+
+		@Override
+		//apres un clic sur boutonSave
+		public void actionPerformed(ActionEvent e) {
+			ConfigurationManager cm = ConfigurationManager.getInstance();
+			cm.setApplicationName(champ1.getText());
+			cm.setApplicationVersion(champ2.getText());
+				
 			
 		}
 
