@@ -18,7 +18,6 @@ public class IndexAction extends ActionSupport {
 		this.message = message;
 	}
 
-
 	public String index() {
 		message = "bonjour depuis index le " + new Date();
 		return SUCCESS;

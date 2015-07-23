@@ -8,6 +8,9 @@
 <title>hello</title>
 </head>
 <body>
+<!--  property est une valuestack ou struts met ttes les valeurs -->
+<!--  il examine notre classe pour trouver le getter -->
+<!--  de l'action a la jsp c'est le get | de la jsp à l'action c'est le set -->
 <h2><s:property value="message" /> </h2>
 </body>
 </html>
