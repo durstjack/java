@@ -6,7 +6,8 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		
+		//SpuFabrique est un spydirmanager c'est lui qui gere  le nb de spydir
+		//et parametre les workers selon le fichier xml
 		SpyDirManager SpyFabrique = new SpyDirManager("config.xml");
 		
 		SpyFabrique.runSpyDir();
