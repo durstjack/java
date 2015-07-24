@@ -21,6 +21,7 @@
         
         <action name="enregistrerForm" class="com.loncoto.basic.StrutsFormulaire.actions.FormAction" method="enregistrer" >
                <result name="success">/article-du-magasin-sauvegarde.jsp</result>
+               <result name="input">/edition-article-du-magasin.jsp</result>               
         </action>
 
     </package>
