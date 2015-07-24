@@ -23,6 +23,15 @@
                <result name="success">/article-du-magasin-sauvegarde.jsp</result>
                <result name="input">/edition-article-du-magasin.jsp</result>               
         </action>
+        
+        <action name="liste-des-articles" class="com.loncoto.basic.StrutsFormulaire.actions.FormAction" method="list" >
+               <result name="success">/liste-des-articles-du-magasin.jsp</result>
+        </action>
+        
+        <!--  avec modele driven -->
+        <action name="edit" class="com.loncoto.basic.StrutsFormulaire.actions.ArticleAction" method="edit" >
+               <result name="success">/edit.jsp</result>
+        </action>
 
     </package>
 

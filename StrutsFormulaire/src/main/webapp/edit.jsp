@@ -10,6 +10,7 @@
 <body>
 <h2><s:property value="message" /> </h2>
 <s:form action="enregistrerForm" method="post">
+<s:hidden name="id" />
 <s:textfield name="libelle" label="nom de l'article"/>
 <s:textfield name="prix" label="prix en €"/>
 <s:textfield name="poids" label="poids"/>
