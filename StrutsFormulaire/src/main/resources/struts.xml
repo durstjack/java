@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+	<constant name="struts.action.extension" value=","/>
+ 
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index"/>
+
+        <action name="index" class="com.loncoto.basic.StrutsFormulaire.IndexAction" method="index" >
+            <result name="success">/index.jsp</result>
+        </action>
+        
+        <action name="afficheForm" class="com.loncoto.basic.StrutsFormulaire.actions.FormAction" method="index" >
+               <result name="success">/edition-article-du-magasin.jsp</result>
+        </action>
+        
+        <action name="enregistrerForm" class="com.loncoto.basic.StrutsFormulaire.actions.FormAction" method="enregistrer" >
+               <result name="success">/article-du-magasin-sauvegarde.jsp</result>
+        </action>
+
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>
