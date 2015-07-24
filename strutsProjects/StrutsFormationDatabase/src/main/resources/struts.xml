@@ -26,6 +26,11 @@
             <result name="success">/edit.jsp</result>
             <result name="not found" type="redirect">/liste</result>
         </action>
+        
+        <action name="save" class="com.loncoto.webapps.StrutsFormationDatabase.actions.ClientAction" method="save" >
+            <result name="success" type="redirect">/liste</result>
+            <result name="input">/edit.jsp</result>
+        </action>
 
     </package>
 

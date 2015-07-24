@@ -56,5 +56,14 @@ public class ClientAction extends ActionSupport implements ServletContextAware
 		return SUCCESS;
 	}
 	
+	
+	public String save(){
+		
+		Client c = new Client(getClientID(), getClientNom(), getClientEmail(), getClientSolde());
+		clientDAO.save(c);
+		return SUCCESS;
+		
+	}
+	
 
 }
