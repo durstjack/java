@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>hello</title>
+<title>Article sauvegardé</title>
 </head>
 <body>
-<h2><s:property value="message" /> </h2>
+<h2>l'ajout de l'article à été effectué </h2>
+
 </body>
 </html>
