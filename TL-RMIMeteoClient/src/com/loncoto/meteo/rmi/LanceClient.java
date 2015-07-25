@@ -11,9 +11,10 @@ import java.util.Scanner;
 public class LanceClient {
 
 	public static void main(String[] args) {
+		
 		System.out.println("lancement client");
-		if (System.getSecurityManager() == null)
-			System.setSecurityManager(new RMISecurityManager());
+		if (System.getSecurityManager() == null) {System.setSecurityManager(new RMISecurityManager()); }
+		
 		System.out.println("quelle adresse? ");
 		Scanner reader = new Scanner(System.in);
 		String url = reader.nextLine();

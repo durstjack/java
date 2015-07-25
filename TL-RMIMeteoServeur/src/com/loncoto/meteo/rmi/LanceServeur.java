@@ -15,13 +15,12 @@ public class LanceServeur {
 		
 		try 
 		{
-			// creation d'un "annuaire" des services
-			// remote que l'on va fournir
+			// creation d'un "annuaire" des services remote que l'on va fournir
 			LocateRegistry.createRegistry(1099);
+			
 			// met en place le gestionaire de "policy"
-			if (System.getSecurityManager() == null) {
-				System.setSecurityManager(new RMISecurityManager());
-			}
+			if (System.getSecurityManager() == null) { System.setSecurityManager(new RMISecurityManager());	}
+			
 			// j'instancie mon fournisseur de service meteo
 			MeteoServiceImpl meteosrv = new MeteoServiceImpl();
 			

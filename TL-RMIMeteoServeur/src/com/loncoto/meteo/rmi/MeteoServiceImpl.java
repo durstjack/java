@@ -4,16 +4,13 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Random;
 
-public class MeteoServiceImpl extends UnicastRemoteObject 
-						implements MeteoService
+public class MeteoServiceImpl extends UnicastRemoteObject implements MeteoService
 {
 
 	private static final long serialVersionUID = 5203586966885707365L;
 
 	private Random rd;
-	private String[] prevision = {"soleil", "neige",
-							"pluie", "brume", "orage",
-							"tempete de glace", "tornade"};
+	private String[] prevision = {"soleil", "neige", "pluie", "brume", "orage", "tempete de glace", "tornade"};
 	
 	public MeteoServiceImpl() throws RemoteException {
 		super();
