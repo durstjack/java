@@ -20,6 +20,7 @@ public class Program {
 		
 		switch(choix){
 			
+			/* dessin d un triangle*/
 			case 1 :
 						for(int j = compteur; j > 0; j--){
 							
@@ -30,7 +31,7 @@ public class Program {
 							System.out.println("");							
 						}
 						break;
-				
+			/* dessin d un triangle*/				
 			case 2:
 						// on sauvegarde la taille
 						int taille = compteur;
