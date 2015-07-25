@@ -1,0 +1,53 @@
+@CHARSET "ISO-8859-1";
+@import url('http://fonts.googleapis.com/css?family=Roboto');
+/* style separé */
+
+body, input[submit]{
+	font-family: Roboto;
+	font-size: 26px;
+}
+body{
+	width: 90%;
+	padding: 20px 10px;
+	margin: 180px auto 0 auto;
+	border: 1px solid gray;
+	cursor: pointer;
+	
+
+	transform: rotate(9deg) scale(1) skew(1deg) translate(10px);
+-webkit-transform: rotate(9deg) scale(1) skew(1deg) translate(10px);
+-moz-transform: rotate(9deg) scale(1) skew(1deg) translate(10px);
+-o-transform: rotate(9deg) scale(1) skew(1deg) translate(10px);
+-ms-transform: rotate(9deg) scale(1) skew(1deg) translate(10px);
+	    transition:1s;
+	
+}
+
+body:hover{
+	width: 90%;
+	padding: 20px 10px;
+	margin: 20px auto 0 auto;
+	border: 1px solid gray;
+	
+		-moz-box-shadow: 5px 5px 20px #000000;
+	-webkit-box-shadow: 5px 5px 20px #000000;
+	box-shadow: 5px 5px 20px #000000;
+	
+	    transition:0.7s;
+	transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+-webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+-moz-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+-o-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+-ms-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+
+
+
+}
+
+td.cellule{
+	color: green;
+}
+
+td{
+	color: green;
+}

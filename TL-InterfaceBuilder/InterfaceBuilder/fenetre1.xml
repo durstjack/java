@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<window name="window1" type="BorderWindow">
+		<JtextField colum="40" name="champs1" pos="north" />
+		<JButton name="bouton1" pos="west" text="cliquez moi" />
+		<JLabel name="label1" pos="south" text="texte ici" />	
+	</window>
+	
+	<window name="window2" type="FlowWindow">
+		<JtextField colum="40" name="champs1" />
+		<JButton name="bouton1" text="cliquez moi" />
+		<JLabel name="label1" text="texte ici" />	
+	</window>
+	
+	<window name="window3" type="GridWindow" cols="2" rows="2">
+		<JtextField colum="40" name="champs1" />
+		<JButton name="bouton1" text="cliquez moi" />
+		<JLabel name="label1" text="texte ici" />	
+	</window>
+	
+</interface>
