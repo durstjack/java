@@ -43,16 +43,15 @@ public class IndexServlet extends HttpServlet {
 			
 			int choix = ArticleDAO.ORDER_BY_DEFAULT;
 			switch(orderBy){
-			case "prix":
-				choix = ArticleDAO.ORDER_BY_PRIX;
-				break;
-			case "poids":
-				choix = ArticleDAO.ORDER_BY_POIDS;
-				break;
-			case "libelle":
-				choix = ArticleDAO.ORDER_BY_LIBELLE;
-				break;	
-			
+				case "prix":
+					choix = ArticleDAO.ORDER_BY_PRIX;
+					break;
+				case "poids":
+					choix = ArticleDAO.ORDER_BY_POIDS;
+					break;
+				case "libelle":
+					choix = ArticleDAO.ORDER_BY_LIBELLE;
+					break;			
 			}
 			List<Article> articles = articleDAO.findAll(choix);
 			request.setAttribute("articles", articles);			
@@ -66,34 +65,34 @@ public class IndexServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		switch(action)
 		{
-		case "editer":
+			case "editer":
+				
+				int ID = Integer.parseInt(request.getParameter("id"));
+				Article article = articleDAO.findByID(ID);
+				request.setAttribute("article", article);			
+				getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);			
+				break;
 			
-			int ID = Integer.parseInt(request.getParameter("id"));
-			Article article = articleDAO.findByID(ID);
-			request.setAttribute("article", article);			
-			getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);			
-			break;
-		
-		case "sauver":			
-			Article a = new Article(Integer.parseInt(request.getParameter("id")),
-													request.getParameter("libelle"),
-													Double.parseDouble(request.getParameter("prix")),
-													Double.parseDouble(request.getParameter("poids")));
-			articleDAO.save(a);
-			response.sendRedirect("IndexServlet");
-			break;
-		case "creer":			
-			Article a2 = new Article();
-			request.setAttribute("article", a2);
-			getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);
-			
-			break;
-			
-		case "supprimer":
-			int idAsupp = Integer.parseInt(request.getParameter("id"));
-			articleDAO.delete(idAsupp);
-			response.sendRedirect("IndexServlet");
-			break;
+			case "sauver":			
+				Article a = new Article(Integer.parseInt(request.getParameter("id")),
+														request.getParameter("libelle"),
+														Double.parseDouble(request.getParameter("prix")),
+														Double.parseDouble(request.getParameter("poids")));
+				articleDAO.save(a);
+				response.sendRedirect("IndexServlet");
+				break;
+			case "creer":			
+				Article a2 = new Article();
+				request.setAttribute("article", a2);
+				getServletContext().getRequestDispatcher("/editer-article.jsp").forward(request, response);
+				
+				break;
+				
+			case "supprimer":
+				int idAsupp = Integer.parseInt(request.getParameter("id"));
+				articleDAO.delete(idAsupp);
+				response.sendRedirect("IndexServlet");
+				break;
 			
 		}
 		

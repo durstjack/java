@@ -50,9 +50,7 @@ public class ArticleDAO {
 		super();
 		this.base = base;
 		
-		try {
-			
-			
+		try {			
 			findAllStatement = base.prepareStatement(FIND_ALL_SQL);
 			findAllOrderedByPoidsStatement = base.prepareStatement(FIND_ALL_ORDERED_POIDS_SQL);
 			findAllOrderedByPrixStatement = base.prepareStatement(FIND_ALL_ORDERED_PRIX_SQL);
