@@ -10,8 +10,7 @@ public class Program {
 		File source = new File("src/principal/Program.java");
 		
 		String result = "";
-		if (source.exists() && source.isFile())
-			result = statTexte(source);
+		if (source.exists() && source.isFile()){ result = statTexte(source); }
 		
 		File rapport = new File("rapport.txt");
 		PrintWriter writer = new PrintWriter(rapport);
