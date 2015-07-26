@@ -4,15 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Data Access Object
+//en relation avec la BdD
 public class IncidentDAO {
-	public static final String SELECT_ALL_SQL = "select * from `Incident`";
-	public static final String INSERT_SQL = 
-			"insert into `Incident` (`description`, `date`, `urgence`, `categorie`)"
-			+ " VALUES(?,?,?,?)";
-	public static final String UPDATE_SQL = "update `Incident` set `description`= ?,"
-			+ " `date`=?, `urgence`=?, `categorie`= ? WHERE `id`=?";
-	public static final String DELETE_SQL = "delete from `Incident`  WHERE `id`=?";
-	
+	public static final String SELECT_ALL_SQL = "select * from `incidents`";
+	public static final String INSERT_SQL = "insert into `incidents` (`description`, `date`, `urgence`, `categorie`) VALUES(?,?,?,?)";
+	public static final String UPDATE_SQL = "update `incidents` set `description`= ?, `date`=?, `urgence`=?, `categorie`= ? WHERE `id`=?";
+	public static final String DELETE_SQL = "delete from `incidents`  WHERE `id`=?";	
 	
 	private PreparedStatement selectAllStatement;
 	private PreparedStatement insertStatement;
@@ -24,10 +22,8 @@ public class IncidentDAO {
 	public IncidentDAO () {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			base =	DriverManager.getConnection("jdbc:mysql://localhost:3306/base2",
-												"root",
-												"");
-			System.out.println("connecté!");
+			base =	DriverManager.getConnection("jdbc:mysql://localhost:3306/bddincidents", "root", "");
+			System.out.println("connecté à la base de données");
 			selectAllStatement = base.prepareStatement(SELECT_ALL_SQL);
 			insertStatement = base.prepareStatement(INSERT_SQL);
 			updateStatement = base.prepareStatement(UPDATE_SQL);
@@ -37,6 +33,7 @@ public class IncidentDAO {
 		catch (SQLException e) {e.printStackTrace();}
 	}
 	
+	//methode findAll renvoit tt les incidents
 	public ArrayList<Incident> findAll() {
 		
 		ArrayList<Incident> incidents = new ArrayList<Incident>();
@@ -55,7 +52,8 @@ public class IncidentDAO {
 		
 		return incidents;
 	}
-
+	
+	//methode delete efface un incident
 	public void delete(Incident i) {
 		try {
 			deleteStatement.clearParameters();
@@ -64,6 +62,7 @@ public class IncidentDAO {
 		} catch (SQLException e) {	e.printStackTrace();}
 	}
 
+	//methode save pour inserrtion ou un update enregistre en base un incident
 	public void save(Incident i) {
 		if (i.getId() == 0) {
 			// insertion

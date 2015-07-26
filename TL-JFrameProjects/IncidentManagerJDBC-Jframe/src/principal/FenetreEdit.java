@@ -23,19 +23,19 @@ public class FenetreEdit extends JFrame implements ActionListener
 	
 	private JButton btCancel,btSave;
 	
+	//attribut incident
 	private Incident incident;
-	public Incident getIncident() {
-		return incident;
-	}
-	public void setIncident(Incident incident) {
-		this.incident = incident;
-	}
+	
+	//getter and setter
+	public Incident getIncident() {	return incident; }
+	public void setIncident(Incident incident) { this.incident = incident; }
 
-
+	//attribut qui contiendra la fenetre parent
+	//celle qui a donné naissance a la fenetreEdit courante
 	private FenetreManager parent;
 	
 	public FenetreEdit(FenetreManager parent) {
-		super("edition");
+		super("edition incident");
 		this.parent = parent;
 		
 		setSize(250, 150);

@@ -33,23 +33,29 @@ public class FenetreManager extends JFrame implements ActionListener, ListSelect
 	private DefaultListModel<Incident> dataIncidents;
 	// le composant graphique liste
 	private JList<Incident> listeIncidents;
+	//objet DAO
 	private IncidentDAO incidentDAO;
 	
 	private FenetreEdit editWindow;
 	
 	public FenetreManager() {
-		super("mon manager");
-		setSize(500, 400);
+		super("Manager d'incidents");
+		setSize(700, 480);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		//notre fenetre sera de type borderlayout
 		setLayout(new BorderLayout());
 		
+		//panelHaut sera de type BoxLayout
 		JPanel panelHaut = new JPanel();
 		BoxLayout bl = new BoxLayout(panelHaut, BoxLayout.X_AXIS);
 		panelHaut.setLayout(bl);
 		
-		btCreer = new JButton("creer");
+		//pour tt nos boutons on cree des elements Jbutton, on les ajoute a notre jpanel panelHaut
+		//on associe a chacun une action avec "setActionCommand(xxx)" xxx constante de type string
+		//on declare l'instance courante de fenetreManager comme listener de ce bouton
+		btCreer = new JButton("creer"); 
 		panelHaut.add(btCreer);
 		btCreer.setActionCommand(CREATE_COMMAND);
 		btCreer.addActionListener(this);
@@ -69,31 +75,24 @@ public class FenetreManager extends JFrame implements ActionListener, ListSelect
 		btReload.setActionCommand(RELOAD_COMMAND);
 		btReload.addActionListener(this);
 
+		//a notre fenetre borderlayout on ajoute en haut panelHaut
 		add(panelHaut, BorderLayout.NORTH);
 		
+		//on instancie nos liste modeles et graphiques
 		dataIncidents = new DefaultListModel<Incident>();
 		listeIncidents = new JList<Incident>(dataIncidents);
 	
-		/*
-		dataIncidents.addElement(new Incident(1,
-										"panne signalisation",
-										new Date(),
-										3,
-										"routine"));
-
-		dataIncidents.addElement(new Incident(2,
-				"voyageur malade station chatelet",
-				new Date(),
-				4,
-				"sante"));
-*/
+		//ajoute une zone avec scroll barre au centre qui contiendra la liste des incidents
 		add(new JScrollPane(listeIncidents), BorderLayout.CENTER);
+		//pour interagir avec la liste, selectionner un element:
 		listeIncidents.addListSelectionListener(this);
 	
 		// initialisation connection a la base
 		incidentDAO = new IncidentDAO();
 		
-		// fenetre d'edition
+		// on instancie une fenetre d'edition
+		// en argument on passe l'instance de FenetreManager courante, (le parent qui a appelé fenetreEdit)
+		//voir le constructeur de FenetreEdit
 		editWindow = new FenetreEdit(this);
 		
 		refresh_liste();
@@ -101,6 +100,7 @@ public class FenetreManager extends JFrame implements ActionListener, ListSelect
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//on switch suivant le bouton actionné
 		switch(e.getActionCommand()) {
 			case CREATE_COMMAND:
 				creer_incident();
@@ -119,13 +119,11 @@ public class FenetreManager extends JFrame implements ActionListener, ListSelect
 	}
 	
 	public void delete_incident() {
-		// il faut insérer dans la base, et ajouter dans la JList
+		// il faut le supprimer de la base, et rafraichir la JList
 		incidentDAO.delete(listeIncidents.getSelectedValue());
 		refresh_liste();
 	}
-	
-	
-	
+		
 	public void save_incident() {
 		// il faut insérer dans la base, et ajouter dans la JList
 		editWindow.setVisible(false);
