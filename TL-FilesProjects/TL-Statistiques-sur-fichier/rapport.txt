@@ -1,10 +1,10 @@
-nombre de caracteres = 2311
-frequence des A = 19.126819126819125%
-frequence des E = 36.7983367983368%
-frequence des I = 16.83991683991684%
-frequence des O = 14.76091476091476%
-frequence des U = 8.316008316008316%
-frequence des Y = 4.158004158004158%
-nombre de mots = 259
-longueur moyenne des mots = 5.146718146718147
+nombre de caracteres = 53573
+frequence des A = 18.52112676056338%
+frequence des E = 26.447574334898277%
+frequence des I = 23.28638497652582%
+frequence des O = 20.54773082942097%
+frequence des U = 8.364632237871675%
+frequence des Y = 2.832550860719875%
+nombre de mots = 7099
+longueur moyenne des mots = 5.0233835751514295
 
