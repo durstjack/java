@@ -12,8 +12,23 @@
 
         <default-action-ref name="index"/>
 
-        <action name="index" class="com.loncoto.webapps.StrutsFormationDatabase2.actions.IndexAction" method="index" >
+        <action name="index" class="com.loncoto.webapps.StrutsFormationDatabase2.IndexAction" method="index" >
             <result name="success">/index.jsp</result>
+        </action>
+        
+        <action name="liste" class="com.loncoto.webapps.StrutsFormationDatabase2.actions.ClientAction" method="liste" >
+            <result name="success">/liste-clients.jsp</result>
+        </action>
+        
+        <action name="edit/*" class="com.loncoto.webapps.StrutsFormationDatabase2.actions.ClientAction" method="edit" >
+        	<param name="clientID">{1}</param> <!-- 1 pour la premiere *  -->
+            <result name="success">/edit.jsp</result>
+            <result name="not found" type="redirect">/liste</result>
+        </action>
+        
+        <action name="save" class="com.loncoto.webapps.StrutsFormationDatabase2.actions.ClientAction" method="save" >
+            <result name="success" type="redirect">/liste</result>
+            <result name="input">/edit.jsp</result>
         </action>
 
     </package>

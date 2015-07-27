@@ -1,1 +1,5 @@
 com\loncoto\webapps\StrutsFormationDatabase2\actions\IndexAction.class
+com\loncoto\webapps\StrutsFormationDatabase2\utils\ClientDAO.class
+com\loncoto\webapps\StrutsFormationDatabase2\actions\ClientAction.class
+com\loncoto\webapps\StrutsFormationDatabase2\beans\Client.class
+com\loncoto\webapps\StrutsFormationDatabase2\utils\DataBaseManager.class
