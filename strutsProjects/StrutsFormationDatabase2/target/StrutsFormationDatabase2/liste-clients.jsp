@@ -16,7 +16,7 @@
 <td><s:property value="id"/></td>
 <td><s:property value="nom"/></td>
 <td><s:property value="email"/></td>
-<td><s:property value="solde"/></td>
+<td><s:property value="solde"/>€</td>
 <td><s:a href="edit/%{id}">editer le client</s:a> </td>
 </tr>
 </s:iterator>

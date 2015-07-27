@@ -18,7 +18,8 @@
 			<message>le nom doit etre compris entre 4 et 50 caracteres !!</message>
 		</field-validator>
 	</field>
-		<field name="clientEmail">
+	
+	<field name="clientEmail">
 		<!--  verifie que le champ n'est pas vide // struts doc validation sur internet pour voir les autres field validator -->
 		<field-validator type="requiredstring">
 			<!-- fait un true et regarde si il y a qqch -->
@@ -28,9 +29,29 @@
 
 		<field-validator type="stringlength">
 			<param name="minLength">4</param>
+			<message>l'email ne doit pas etre inferieur a 4 </message>
+		</field-validator>
+		<field-validator type="stringlength">
 			<param name="maxLength">50</param>
-			<message>l'email doit etre compris entre 4 et 50 caracteres !!</message>
+			<!--  <message>l'email doit etre compris entre 4 et 50 caracteres !!</message> -->
+			<message>l'email ne doit pas etre superieur a 50</message>
+		</field-validator>
+		
+	</field>
+	
+	<field name="clientSolde">
+		<field-validator type="required">
+			<message>indiquez un solde</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">0</param>
+			<message>le solde ne peut etre inférieur à 0€</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="maxInclusive">50000</param>
+			<message>le solde ne peut etre supérieur à 50000 !!</message>
 		</field-validator>
 	</field>
+	
 </validators>
 

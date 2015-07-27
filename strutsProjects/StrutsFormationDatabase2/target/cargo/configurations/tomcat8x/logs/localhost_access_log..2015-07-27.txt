@@ -1,9 +1,5 @@
-127.0.0.1 - - [27/Jul/2015:11:53:06 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
-127.0.0.1 - - [27/Jul/2015:11:53:26 +0200] "GET /StrutsFormationDatabase2/liste HTTP/1.1" 200 2459
-127.0.0.1 - - [27/Jul/2015:11:53:27 +0200] "GET /StrutsFormationDatabase2/edit/2 HTTP/1.1" 200 1259
-127.0.0.1 - - [27/Jul/2015:11:53:34 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1425
-127.0.0.1 - - [27/Jul/2015:11:53:43 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1389
-127.0.0.1 - - [27/Jul/2015:11:53:50 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1543
-127.0.0.1 - - [27/Jul/2015:11:54:00 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1417
-127.0.0.1 - - [27/Jul/2015:11:54:14 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 302 -
-127.0.0.1 - - [27/Jul/2015:11:54:14 +0200] "GET /StrutsFormationDatabase2/liste HTTP/1.1" 200 2456
+127.0.0.1 - - [27/Jul/2015:12:18:19 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
+127.0.0.1 - - [27/Jul/2015:12:18:26 +0200] "GET /StrutsFormationDatabase2/edit/liste HTTP/1.1" 200 8548
+127.0.0.1 - - [27/Jul/2015:12:18:32 +0200] "GET /StrutsFormationDatabase2/liste HTTP/1.1" 200 2499
+127.0.0.1 - - [27/Jul/2015:12:18:34 +0200] "GET /StrutsFormationDatabase2/edit/2 HTTP/1.1" 200 1257
+127.0.0.1 - - [27/Jul/2015:12:18:39 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1426

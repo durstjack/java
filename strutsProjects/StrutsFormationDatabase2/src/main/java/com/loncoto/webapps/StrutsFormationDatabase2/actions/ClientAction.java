@@ -60,7 +60,12 @@ public class ClientAction extends ActionSupport implements ServletContextAware
 	
 	
 	public String save(){
-		
+		//on ajoute un controle, en retorunant "input" on renverra vers edit.jsp voir dans struts xml
+		//on ajoute un fieldError personnalisé sur le champ "clientNom" de notre formulaire
+		if(getClientNom().equals("toto")){
+			addFieldError("clientNom", "vous ne pouvez pas rentre le le nom toto est réservé");
+			return INPUT;			
+		}
 		Client c = new Client(getClientID(), getClientNom(), getClientEmail(), getClientSolde());
 		clientDAO.save(c);
 		return SUCCESS;
