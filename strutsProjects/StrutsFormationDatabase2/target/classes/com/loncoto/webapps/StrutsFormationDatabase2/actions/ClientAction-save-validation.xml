@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="clientNom">
+		<!--  verifie que le champ n'est pas vide // struts doc validation sur internet pour voir les autres field validator -->
+		<field-validator type="requiredstring">
+			<!-- fait un true et regarde si il y a qqch -->
+			<param name="trim">true</param>
+			<message>le client doit avoir un nom !!</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">4</param>
+			<param name="maxLength">50</param>
+			<message>le nom doit etre compris entre 4 et 50 caracteres !!</message>
+		</field-validator>
+	</field>
+		<field name="clientEmail">
+		<!--  verifie que le champ n'est pas vide // struts doc validation sur internet pour voir les autres field validator -->
+		<field-validator type="requiredstring">
+			<!-- fait un true et regarde si il y a qqch -->
+			<param name="trim">true</param>
+			<message>le client doit avoir une adresse mail !!</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">4</param>
+			<param name="maxLength">50</param>
+			<message>l'email doit etre compris entre 4 et 50 caracteres !!</message>
+		</field-validator>
+	</field>
+</validators>
+
