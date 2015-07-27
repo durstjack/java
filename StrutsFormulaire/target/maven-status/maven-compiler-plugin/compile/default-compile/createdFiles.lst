@@ -1,0 +1,4 @@
+com\loncoto\basic\StrutsFormulaire\actions\FormAction.class
+com\loncoto\basic\StrutsFormulaire\IndexAction.class
+com\loncoto\basic\StrutsFormulaire\actions\ArticleAction.class
+com\loncoto\basic\StrutsFormulaire\bean\Article.class

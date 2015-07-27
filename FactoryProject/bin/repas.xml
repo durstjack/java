@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+
+	<entry cle="tarte a la fraise" valeur="dessert" />
+	<entry cle="poulet roti" valeur="plat" />
+	<entry cle="sandwich jambon" valeur="plat" />
+	<entry cle="nem" valeur="entrée" />
+	<entry cle="eclair au chocolat" valeur="dessert" />
+
+</menu>
