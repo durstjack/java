@@ -10,11 +10,8 @@
 
     <package name="default" namespace="/" extends="struts-default">
 
-        <default-action-ref name="index"/>
+        <default-action-ref name="liste"/>
 
-        <action name="index" class="com.loncoto.webapps.StrutsFormationDatabase2.IndexAction" method="index" >
-            <result name="success">/index.jsp</result>
-        </action>
         
         <action name="liste" class="com.loncoto.webapps.StrutsFormationDatabase2.actions.ClientAction" method="liste" >
             <result name="success">/liste-clients.jsp</result>

@@ -12,7 +12,7 @@
 <s:form action="save" method="post">
 <s:hidden name="clientID" />
 <s:textfield name="clientNom" label="nom du client" />
-<s:textfield name="clientEmail" label="email du client" />
+<s:textfield name="clientEmail" label="email" />
 <s:textfield name="clientSolde" label="solde du client" />
 <s:submit value="valider" />
 </s:form>

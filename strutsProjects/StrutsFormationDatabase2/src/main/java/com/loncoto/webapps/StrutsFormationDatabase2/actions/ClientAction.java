@@ -41,15 +41,17 @@ public class ClientAction extends ActionSupport implements ServletContextAware
 
 	public String liste(){		
 		clients = clientDAO.findAll();
-		return SUCCESS;
-		
+		return SUCCESS;		
 	}
 	
 	public  String edit(){
+		//on recupere clientID grâce a struts2 dans struts xml on a <param name="clientID">{1}</param>
 		Client c = clientDAO.findByID(clientID);
 		if( c == null ){
+			//en retournant "not found" on redirigera vers liste voir dans struts xml
 			return "not found";
 		}
+		//on va setter la valeur des inputs dans edit.jsp
 		setClientNom(c.getNom());
 		setClientEmail(c.getEmail());
 		setClientSolde(c.getSolde());
