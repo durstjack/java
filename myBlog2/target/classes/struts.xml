@@ -9,7 +9,15 @@
     <constant name="struts.enable.SlashesInActionNames" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-        
+    
+	    <!--  pour le nouveau resultat, le flux RSS --> 
+	    <result-types>
+	    	<result-type name="fluxRSS" class="com.loncoto.webapps.myBlog.utils.RSSResult"></result-type>
+	    </result-types>
+    
+    
+    
+       <!--  pour intercepteur --> 
         <interceptors>
             <interceptor name="daoInterceptor" class="com.loncoto.webapps.myBlog.utils.DAOInterceptor"/>
         	<interceptor-stack name="myInterceptorStack">
@@ -17,11 +25,27 @@
 				<interceptor-ref name="defaultStack" />	
 	       	</interceptor-stack>
    	    </interceptors>
+   	    
+   	    
+   	    
         
         <default-interceptor-ref name="myInterceptorStack" />
                 
         <default-action-ref name="liste"/>
         
+        <action name="flux-RSS" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="liste" >
+            <result name="success" type="fluxRSS">
+            	<param name="channelTitre">le flux RSS du blog</param>
+            	<param name="channelDescription">un flux super intéresssant sur l actu dans le monde et d ailleurs</param>
+            	<param name="channelLink">index RSS</param>
+            	<param name="itemsCollectionName">posts</param><!--  attention ici il faut mettre le nom des attributs du DAO/Bean -->
+            	<param name="itemTitle">titre</param><!--  attention ici il faut mettre le nom des attributs du DAO/Bean -->
+            	<param name="itemDescription">corps</param><!--  attention ici il faut mettre le nom des attributs du DAO/Bean -->
+            	
+            </result>
+        </action>
+                
+
         <action name="liste" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="liste" >
             <result name="success">/liste-des-posts.jsp</result>
         </action>

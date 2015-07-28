@@ -4,3 +4,4 @@ com\loncoto\webapps\myBlog\utils\DAOInterceptor.class
 com\loncoto\webapps\myBlog\utils\PostDAO.class
 com\loncoto\webapps\myBlog\beans\Post.class
 com\loncoto\webapps\myBlog\actions\BlogAction.class
+com\loncoto\webapps\myBlog\utils\RSSResult.class
