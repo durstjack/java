@@ -1,0 +1,6 @@
+com\loncoto\webapps\myBlog\utils\DataBaseManager.class
+com\loncoto\webapps\myBlog\actions\IndexAction.class
+com\loncoto\webapps\myBlog\utils\DAOInterceptor.class
+com\loncoto\webapps\myBlog\utils\PostDAO.class
+com\loncoto\webapps\myBlog\beans\Post.class
+com\loncoto\webapps\myBlog\actions\BlogAction.class

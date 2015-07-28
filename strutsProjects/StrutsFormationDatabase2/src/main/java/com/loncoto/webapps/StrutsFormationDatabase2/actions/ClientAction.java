@@ -62,8 +62,12 @@ public class ClientAction extends ActionSupport implements ServletContextAware
 	public String save(){
 		//on ajoute un controle, en retorunant "input" on renverra vers edit.jsp voir dans struts xml
 		//on ajoute un fieldError personnalisé sur le champ "clientNom" de notre formulaire
+		//propre mecanisme de verification
 		if(getClientNom().equals("toto")){
 			addFieldError("clientNom", "vous ne pouvez pas rentre le le nom toto est réservé");
+			// dans edit.jsp on une balise jsp <s:actionerror/> on l'utilise en general qd l'erreur n'est pas lié a un champs
+			//checker un code postal, ou compte deja pris, ou le stock est épuisé, erreur lié a une situation
+			addActionError("veuillez entrez un autre nom");
 			return INPUT;			
 		}
 		Client c = new Client(getClientID(), getClientNom(), getClientEmail(), getClientSolde());

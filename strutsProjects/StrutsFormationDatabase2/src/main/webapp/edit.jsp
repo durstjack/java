@@ -9,6 +9,7 @@
 </head>
 <body>
 <h2>edition clients</h2>
+<s:actionerror/>
 <s:form action="save" method="post">
 <s:hidden name="clientID" />
 <s:textfield name="clientNom" label="nom du client" />

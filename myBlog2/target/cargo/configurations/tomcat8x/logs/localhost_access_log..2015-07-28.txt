@@ -1,0 +1,8 @@
+127.0.0.1 - - [28/Jul/2015:12:25:54 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/liste HTTP/1.1" 200 6705
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/css/style.css HTTP/1.1" 200 3857
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/js/bootstrap.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/js/jquery-1.11.3.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/css/bootstrap.min.css HTTP/1.1" 304 -
+127.0.0.1 - - [28/Jul/2015:12:26:08 +0200] "GET /myBlog2/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 -
+127.0.0.1 - - [28/Jul/2015:12:26:21 +0200] "GET /myBlog2/css/style.css HTTP/1.1" 304 -

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+	<constant name="struts.action.extension" value=","/>
+    <constant name="struts.enable.SlashesInActionNames" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        
+        <interceptors>
+            <interceptor name="daoInterceptor" class="com.loncoto.webapps.myBlog.utils.DAOInterceptor"/>
+        	<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="daoInterceptor" />
+				<interceptor-ref name="defaultStack" />	
+	       	</interceptor-stack>
+   	    </interceptors>
+        
+        <default-interceptor-ref name="myInterceptorStack" />
+                
+        <default-action-ref name="liste"/>
+        
+        <action name="liste" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="liste" >
+            <result name="success">/liste-des-posts.jsp</result>
+        </action>
+        
+        <action name="edit/*" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="edit" >
+        	<param name="postID">{1}</param> <!-- 1 pour la premiere *  -->
+            <result name="success">/editer-un-post.jsp</result>
+            <result name="not found" type="redirect">/liste</result>
+        </action>
+        
+        <action name="save" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="save" >
+            <result name="success" type="redirect">/liste</result>
+            <result name="input">/editer-un-post.jsp</result>
+        </action>
+        
+        <action name="create" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="create" >
+            <result name="success">/editer-un-post.jsp</result>
+        </action>
+
+        <action name="delete-article-id-*" class="com.loncoto.webapps.myBlog.actions.BlogAction" method="delete" >
+        	<param name="postID">{1}</param>
+            <result name="success" type="redirect">/liste</result>
+        </action>        
+
+
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>

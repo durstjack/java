@@ -1,5 +1,3 @@
-127.0.0.1 - - [27/Jul/2015:12:18:19 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
-127.0.0.1 - - [27/Jul/2015:12:18:26 +0200] "GET /StrutsFormationDatabase2/edit/liste HTTP/1.1" 200 8548
-127.0.0.1 - - [27/Jul/2015:12:18:32 +0200] "GET /StrutsFormationDatabase2/liste HTTP/1.1" 200 2499
-127.0.0.1 - - [27/Jul/2015:12:18:34 +0200] "GET /StrutsFormationDatabase2/edit/2 HTTP/1.1" 200 1257
-127.0.0.1 - - [27/Jul/2015:12:18:39 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1426
+127.0.0.1 - - [27/Jul/2015:13:55:55 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
+127.0.0.1 - - [27/Jul/2015:13:56:04 +0200] "GET /StrutsFormationDatabase2/edit/4 HTTP/1.1" 200 1236
+127.0.0.1 - - [27/Jul/2015:13:56:08 +0200] "POST /StrutsFormationDatabase2/save HTTP/1.1" 200 1512
