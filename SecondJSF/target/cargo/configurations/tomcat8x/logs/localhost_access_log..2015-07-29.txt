@@ -1,0 +1,6 @@
+127.0.0.1 - - [29/Jul/2015:16:51:23 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
+127.0.0.1 - - [29/Jul/2015:16:51:44 +0200] "GET /SecondJSF/faces/index.xhtml HTTP/1.1" 200 1138
+127.0.0.1 - - [29/Jul/2015:16:51:44 +0200] "GET /SecondJSF/faces/css/styles.css HTTP/1.1" 404 1051
+127.0.0.1 - - [29/Jul/2015:16:51:58 +0200] "POST /SecondJSF/faces/index.xhtml HTTP/1.1" 200 900
+127.0.0.1 - - [29/Jul/2015:16:52:04 +0200] "GET /SecondJSF/faces/index.xhtml HTTP/1.1" 200 1138
+127.0.0.1 - - [29/Jul/2015:16:53:04 +0200] "POST /SecondJSF/faces/index.xhtml HTTP/1.1" 200 901
