@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.loncoto.webapps.SecondJPA.beans.Article;
+import com.loncoto.webapps.SecondJPA.beans.*;
 
 public class JpaTest {
 
