@@ -8,8 +8,6 @@
 
       
        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-
-	   <class>com.loncoto.webapps.SecondJPA.beans.Message</class>
   
 
       <properties>
