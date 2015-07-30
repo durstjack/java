@@ -35,8 +35,6 @@ public class JpaTest {
 	}
 
 
-
-
 	public static void test1(EntityManagerFactory emf)
 	{
 		// on recupere un entityManager
@@ -45,7 +43,43 @@ public class JpaTest {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		//----------------------------------------------------
+		
+			//definition des employés
+			em.persist( new Site(0, "clermont ferrand", "2 rue allée alan turing"));
+			em.persist( new Site(0, "toulouse", " rue de l aerodrome"));
+			em.persist( new Site(0, "lille", "14 rue du lac"));
+			em.persist( new Site(0, "paris", "94 grande arche"));
+			
+			//definition des employes
+			em.persist( new Employe(0, "lalandre thierry", "thierry@gmail.com", 3200.0));
+			em.persist( new Employe(0, "lalandre marc", "marc@gmail.com", 1200.0));
+			em.persist( new Employe(0, "frdalic jose", "jose88@gmail.com", 1600.0));
+			em.persist( new Employe(0, "Pelusa marie", "marie@gmail.com", 1580.0));
+			em.persist( new Employe(0, "Malvic eric", "eric@gmail.com", 1560.0));
+			
+			//definition des services
+			em.persist(new Service(0, "consulting"));
+			em.persist(new Service(0, "MCR"));
+			em.persist(new Service(0, "aerospatial"));
+			
+			//definition d'un service pour chaque employé
+			Random rd = new Random();
+			//rd.nextInt(5) va tirer entre 0 et 4
+			for( int i = 1; i < 6; i++){
+				Employe e = em.find(Employe.class, i);
+				e.setService(em.find(Service.class, (rd.nextInt(3) + 1) ));
+			}
 
+			
+			//definition pour chaque service, d'un manager et d'un site
+			rd = new Random();
+			//rd.nextInt(5) va tirer entre 0 et 4
+			for( int i = 1; i < 5; i++){
+				Service s = em.find(Service.class, i);
+				//s.setManager(em.find());			
+			}
+			
+			
 		//----------------------------------------------------
 		tx.commit();
 		em.close();
