@@ -1,13 +1,26 @@
 package com.loncoto.webapps.JPA_association.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity
 public class Categorie {
 	
 	private int id;
 	private String libelle;
+	
+	private Set<Post> posts;
+	
+	@OneToMany(mappedBy="categorie")	
+	public Set<Post> getPosts() {
+		if(posts == null){ posts = new HashSet<Post>();	}
+		return posts;
+	}
+	public void setPosts(Set<Post> posts) { this.posts = posts;	}
 	
 	@Id @GeneratedValue
 	public int getId() { return id; }
@@ -21,9 +34,6 @@ public class Categorie {
 		this.id = id;
 		this.libelle = libelle;
 	}
-	
-	
-	
 	
 
 }
