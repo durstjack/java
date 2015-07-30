@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+             
+             <!--  nom de l unité de persistence, on la retrouve plus tard ds le code -->
+   <persistence-unit name="testHibernate">
+
+      
+       <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+	   <class>com.loncoto.webapps.FirstJPA.beans.Message</class>
+	   
+	   <!--  Hibernate va se configurer grace a ce fichier -->
+  
+
+      <properties>
+          <!-- Scan for annotated classes and Hibernate mapping XML files -->
+          <property name="hibernate.archive.autodetection" value="class, hbm"/>
+
+        
+          <property name="hibernate.show_sql" value="true"/>
+          <property name="hibernate.format_sql" value="true"/>
+          <property name="use_sql_comments" value="true"/><!-- commentaire dans la console des requetes -->
+         
+
+          <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/base_FirstJPA"/>
+          <property name="javax.persistence.jdbc.user" value="root"/>
+          <property name="javax.persistence.jdbc.password" value=""/>
+
+          <property name="hibernate.c3p0.min_size" value="5"/>
+          <property name="hibernate.c3p0.max_size" value="20"/>
+          <property name="hibernate.c3p0.timeout"  value="300"/>
+          <property name="hibernate.c3p0.max_statements" value="50"/>
+          <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+
+          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/><!--  genere les requetes en mysql5 -->
+		  <property name="hibernate.hbm2ddl.auto" value="create-drop"/><!-- creer et efface les tables / en prod validate -->
+      </properties>
+   </persistence-unit>
+
+</persistence>
