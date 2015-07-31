@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import com.loncoto.webapps.exoJPA.beans.*;
 
@@ -74,9 +75,10 @@ public class JpaTest {
 			//definition pour chaque service, d'un manager et d'un site
 			rd = new Random();
 			//rd.nextInt(5) va tirer entre 0 et 4
-			for( int i = 1; i < 5; i++){
+			for( int i = 1; i < 4; i++){
 				Service s = em.find(Service.class, i);
-				//s.setManager(em.find());			
+				s.setManager(em.find(Employe.class, (rd.nextInt(5) + 1)));	
+				s.setSite(em.find(Site.class, (rd.nextInt(3) + 1)));	
 			}
 			
 			
@@ -95,6 +97,23 @@ public class JpaTest {
 		tx.begin();
 		//----------------------------------------------------
 		
+
+		//tt les employes avec les details
+		TypedQuery<Employe> query = em.createQuery("select emp from Employe as emp", Employe.class);
+		System.out.println("--------------- Liste de tous les employés -------------------");
+		List<Employe> resultats = query.getResultList();
+		for(Employe e : resultats) {
+			System.out.println("id=> "+ e.getId() + ", nom=> " + e.getNom() + ", email=> " + e.getEmail() + ", salaire=> " + e.getSalaire() + "€ , serviceID=> " + e.getService().getId() );
+		}
+		
+		//tt les employes d un service
+		query = em.createQuery("select emp from Employe as emp where emp.service.id= :service_id", Employe.class);
+		query.setParameter("service_id", 1);
+		resultats = query.getResultList();
+		System.out.println("--------------- Employé(s) du service avec => id=1  -------------------");
+		for(Employe e : resultats) {
+			System.out.println("nom de l'employé => " + e.getNom());
+		}
 
 		//----------------------------------------------------
 		tx.commit();
