@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+          http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util-4.0.xsd
+            http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+			default-autowire="byName">
+			
+<!-- objet qui seront utilisée -->
+<!--   scope="prototype" permet de changer le comportement par défaut (scope="prototype") -->
+<!-- cela permet de ne pas avoir la meme instance de msg1 pour lettre1 et 2  -->
+<bean id="msg1" class="com.loncoto.webapps.FirstSpring.beans.Message" scope="prototype">
+	<!-- va appeler les methodes set => setTitre et setCorps -->
+	<property name="titre" value="bonjour" />
+	<property name="corps" value="bienvenue dans le monde de spring Thierry!"/>
+</bean>
+
+<!-- 
+1ere version
+<bean id="lettre1" class="com.loncoto.webapps.FirstSpring.beans.Missive">
+	<property name="destinataire" value="bob" />
+	<property name="adresse" value="35 rue du lac 92400 courbevoie"/>
+	<property name="contenu" ref="msg1" />
+</bean>
+
+-->
+<!-- 2eme version -->
+<!-- particularité de spring il fait un init eager il instancie tt les beans meme si on a pas instancié dans le main -->
+<!-- on peut changer ce comportement avec lazy-init="true"  -->
+<bean id="lettre1" class="com.loncoto.webapps.FirstSpring.beans.Missive" lazy-init="true">
+	<constructor-arg index="0" value="bob"/>
+	<constructor-arg index="1" value="35 rue du lac 92400 courbevoie"/>
+	<property name="contenu" ref="msg1" />
+</bean>
+
+<bean id="lettre2" class="com.loncoto.webapps.FirstSpring.beans.Missive" lazy-init="true">
+	<constructor-arg index="0" value="abdellatif ben arfa"/>
+	<constructor-arg index="1" value="3 rue du lac 92400 courbevoie"/>
+	<property name="contenu" ref="msg1" />
+</bean>
+
+
+</beans>

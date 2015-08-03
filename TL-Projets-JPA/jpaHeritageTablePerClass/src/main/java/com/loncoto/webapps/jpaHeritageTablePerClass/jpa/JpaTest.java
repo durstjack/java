@@ -50,13 +50,15 @@ public class JpaTest {
 		Random rd = new Random();
 		
 		String matricule = "GDRET";
-		
+		//pas de autoinc dans table per class
+		//donc ajout de j pour generer le id 
+		//int j = 1;
 		for( int i = 1; i <= 10; i++){
 			
 			
-			em.persist(new Personne(0, "doe-"+i, "john"+i));
-			em.persist(new Employe(0, "eponge"+i, "bob"+i, "bob"+i+"@gmail.com", rd.nextDouble()*1000 + 1500.0, new Date()));
-			em.persist(new Client(0, "star"+i, "patrick"+i, matricule+i, new Date(), rd.nextDouble()*500 + 50.0));
+			em.persist(new Personne(0 /*j++*/, "doe-"+i, "john"+i));
+			em.persist(new Employe(0 /*j++*/, "eponge"+i, "bob"+i, "bob"+i+"@gmail.com", rd.nextDouble()*1000 + 1500.0, new Date()));
+			em.persist(new Client(0 /*j++*/, "star"+i, "patrick"+i, matricule+i, new Date(), rd.nextDouble()*500 + 50.0));
 		}
 		
 
