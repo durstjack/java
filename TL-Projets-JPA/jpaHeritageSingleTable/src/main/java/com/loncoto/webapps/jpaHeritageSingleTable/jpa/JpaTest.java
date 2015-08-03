@@ -45,7 +45,23 @@ public class JpaTest {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		//----------------------------------------------------
+		
+		
+		Random rd = new Random();
+		
+		String matricule = "GDRET";
+		
+		for( int i = 1; i <= 10; i++){
+			
+			
+			em.persist(new Personne(0, "doe-"+i, "john"+i));
+			em.persist(new Employe(0, "eponge"+i, "bob"+i, "bob"+i+"@gmail.com", rd.nextDouble()*1000 + 1500.0, new Date()));
+			em.persist(new Client(0, "star"+i, "patrick"+i, matricule+i, new Date(), rd.nextDouble()*500 + 50.0));
+		}
+		
 
+		System.out.println(" --------------------  fin du test 1 -------------------- ");
+		
 		//----------------------------------------------------
 		tx.commit();
 		em.close();
@@ -60,8 +76,21 @@ public class JpaTest {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		//----------------------------------------------------
-		
 
+		System.out.println(" --------------------  liste des clients -------------------- ");
+		List<Client> clients = em.createQuery("from Client", Client.class).getResultList();
+		
+		for(Client client : clients){
+			System.out.println("client : " + client.getNom() + ", solde de : " + client.getSolde());
+		}
+		System.out.println(" ----------------------------------------- -------------------- ");
+		System.out.println(" --------------------  liste des personnes -------------------- ");
+		List<Personne> personnes = em.createQuery("from Personne", Personne.class).getResultList();
+		
+		for(Personne personne : personnes){
+			System.out.println("personne : " + personne.getNom() + " " + personne.getPrenom());
+		}
+		
 		
 		//----------------------------------------------------
 		tx.commit();
