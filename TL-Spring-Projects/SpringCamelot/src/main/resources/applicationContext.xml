@@ -20,9 +20,27 @@
 			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
 			default-autowire="byName">
 
-<bean id="msg1" class="com.loncoto.webapps.SpringCamelot.beans.Message">
-	<property name="titre" value="bonjour" />
-	<property name="corps" value="bienvenue dans le monde de spring!"/>
+
+<bean id="quete1" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+<constructor-arg index="0" value="compter les pierres du chateau"/>
+<constructor-arg index="1" value="0.3"/>
+</bean>
+<bean id="quete2" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+<constructor-arg index="0" value="faire un tour de garde"/>
+<constructor-arg index="1" value="0.2"/>
+</bean>
+<bean id="quete3" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+<constructor-arg index="0" value="nettoyer ecurie"/>
+<constructor-arg index="1" value="0.4"/>
+</bean>
+
+<bean id="jacquot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
+	<property name="nom" value="jacquot" />
+	<property name="quete" ref="quete1"/>
+</bean>
+<bean id="charlot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
+	<property name="nom" value="charlot" />
+	<property name="quete" ref="quete2"/>
 </bean>
 
 

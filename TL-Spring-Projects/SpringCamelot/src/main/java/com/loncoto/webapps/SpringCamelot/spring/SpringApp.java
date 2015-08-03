@@ -5,7 +5,7 @@ import java.util.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.loncoto.webapps.SpringCamelot.beans.Message;
+import com.loncoto.webapps.SpringCamelot.beans.*;
 
 public class SpringApp {
 
@@ -22,9 +22,12 @@ public class SpringApp {
         input.nextLine();
         System.out.println("--------------------------------------");
         
-        Message msg = (Message)ctx.getBean("msg1");
+        IChevalier c1 = ctx.getBean("jacquot",IChevalier.class);
+        c1.partirEnQuete();
         
-        System.out.println(msg);
+        IChevalier c2 = ctx.getBean("charlot",IChevalier.class);
+        c2.partirEnQuete();
+        
         
         input.nextLine();
 		System.out.println("--------------------------------------");
