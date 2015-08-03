@@ -1,4 +1,4 @@
-package com.loncoto.webapps.jpaHeritageJoined.beans;
+package com.loncoto.webapps.jpaHeritageTablePerClass.beans;
 import javax.persistence.*;
 @Entity
 //on peut choisir ici la strategie d'heritage
