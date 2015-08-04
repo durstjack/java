@@ -20,28 +20,86 @@
 			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
 			default-autowire="byName">
 
+<!-- creation ecurie -->
+	<bean id="ecurie" class="com.loncoto.webapps.SpringCamelot.beans.Ecurie" >
+		<constructor-arg index="0">
+			<list>
+				<bean class="java.lang.String"><constructor-arg value="blender" /></bean>
+				<bean class="java.lang.String"><constructor-arg value="louis" /></bean>
+				<bean class="java.lang.String"><constructor-arg value="jean tremble" /></bean>
+				<bean class="java.lang.String"><constructor-arg value="bourriquet" /></bean>
+			</list>
+		</constructor-arg>
+	</bean>
 
-<bean id="quete1" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
-<constructor-arg index="0" value="compter les pierres du chateau"/>
-<constructor-arg index="1" value="0.3"/>
-</bean>
-<bean id="quete2" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
-<constructor-arg index="0" value="faire un tour de garde"/>
-<constructor-arg index="1" value="0.2"/>
-</bean>
-<bean id="quete3" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
-<constructor-arg index="0" value="nettoyer ecurie"/>
-<constructor-arg index="1" value="0.4"/>
-</bean>
+<!-- creation chevaux ici on utilise factory-bean & factory-method car on ne veut pas que spring instancie directement un cheval -->
+	<bean id="cheval1" class="com.loncoto.webapps.SpringCamelot.beans.Cheval" factory-bean="ecurie" factory-method="fournirCheval" scope="prototype"/>
+	
+<!-- creation des quetes -->
+	<bean id="quete1" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+	<constructor-arg index="0" value="compter les pierres du chateau"/>
+	<constructor-arg index="1" value="0.3"/>
+	</bean>
+	<bean id="quete2" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+	<constructor-arg index="0" value="faire un tour de garde"/>
+	<constructor-arg index="1" value="0.2"/>
+	</bean>
+	<bean id="quete3" class="com.loncoto.webapps.SpringCamelot.beans.QueteStandard">
+	<constructor-arg index="0" value="nettoyer ecurie"/>
+	<constructor-arg index="1" value="0.4"/>
+	</bean>
+	<bean id="quete4" class="com.loncoto.webapps.SpringCamelot.beans.QueteEpique">
+	<constructor-arg index="0" value="sauver la dame du lac"/>
+	<constructor-arg index="1" value="0.5"/>
+	</bean>
+	<bean id="quete5" class="com.loncoto.webapps.SpringCamelot.beans.QueteEpique">
+	<constructor-arg index="0" value="trouver le grall"/>
+	<constructor-arg index="1" value="0.75"/>
+	</bean>
 
-<bean id="jacquot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
-	<property name="nom" value="jacquot" />
-	<property name="quete" ref="quete1"/>
-</bean>
-<bean id="charlot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
-	<property name="nom" value="charlot" />
-	<property name="quete" ref="quete2"/>
-</bean>
+<!-- creation des chevaliers -->
+	<bean id="jacquot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
+		<property name="nom" value="jacquot" />
+		<property name="quete" ref="quete1"/>
+	</bean>
+	<bean id="charlot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
+		<property name="nom" value="charlot" />
+		<property name="quete" ref="quete2"/>
+	</bean>
+	<bean id="bernardot" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierBasique">
+		<property name="nom" value="bernardot" />
+		<property name="quete" ref="quete4"/>
+	</bean>
+	<bean id="caradoc" class="com.loncoto.webapps.SpringCamelot.beans.ChevalierTableRonde">
+		<property name="nom" value="caradoc" />
+		<property name="quete" ref="quete5"/>
+		<property name="monture" ref="cheval1"/>	
+	</bean>
+	
+<!-- creation de menestrel -->
+	<bean id="menestrel" class="com.loncoto.webapps.SpringCamelot.beans.Menestrel" />
+
+<!--  AOP config -->
+	<aop:config>
+		<!-- la syntaxe du point de coupe execution -->
+		<aop:pointcut expression="execution( * com.loncoto.webapps.SpringCamelot.beans.Chevalier*.partir*(..)) and target(bean)" id="pointDeCoupeQuete"/>
+		<aop:pointcut expression="execution( * com.loncoto.webapps.SpringCamelot.beans.ChevalierTableRonde.partir*(..)) and target(bean)" id="pointDeCoupeQuete2"/>
+		
+		<aop:aspect ref="menestrel">
+			<aop:before method="chanteAvant" pointcut-ref="pointDeCoupeQuete" arg-names="bean" />
+			<aop:after-returning method="chanteApres" pointcut-ref="pointDeCoupeQuete2" arg-names="bean" />
+		</aop:aspect>
+	</aop:config>
+
+
 
 
 </beans>
+
+
+
+
+
+
+
+

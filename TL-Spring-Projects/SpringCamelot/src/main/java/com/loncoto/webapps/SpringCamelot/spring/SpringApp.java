@@ -23,10 +23,26 @@ public class SpringApp {
         System.out.println("--------------------------------------");
         
         IChevalier c1 = ctx.getBean("jacquot",IChevalier.class);
+        System.out.println("--------------------------------------");
         c1.partirEnQuete();
+        System.out.println("--------------------------------------");
         
         IChevalier c2 = ctx.getBean("charlot",IChevalier.class);
+        System.out.println("--------------------------------------");
         c2.partirEnQuete();
+        System.out.println("--------------------------------------");
+        
+        IChevalier c3 = ctx.getBean("bernardot",IChevalier.class);
+        System.out.println("--------------------------------------");
+        c3.partirEnQuete();
+        System.out.println("--------------------------------------");
+        
+        
+        IChevalier c4 = ctx.getBean("caradoc",IChevalier.class);
+        System.out.println("--------------------------------------");
+        c4.partirEnQuete();
+        System.out.println("--------------------------------------");
+       
         
         
         input.nextLine();
