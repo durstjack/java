@@ -1,0 +1,6 @@
+com\loncoto\webapps\SpringAOPexo\beans\TextSaluer.class
+com\loncoto\webapps\SpringAOPexo\beans\ItextUtils.class
+com\loncoto\webapps\SpringAOPexo\beans\MyAroundAdvice.class
+com\loncoto\webapps\SpringAOPexo\beans\ITextSaluer.class
+com\loncoto\webapps\SpringAOPexo\beans\TextUtils.class
+com\loncoto\webapps\SpringAOPexo\spring\SpringApp.class
