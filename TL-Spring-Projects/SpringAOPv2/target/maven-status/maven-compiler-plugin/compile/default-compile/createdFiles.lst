@@ -1,0 +1,4 @@
+com\loncoto\webapps\SpringAOPv2\spring\SpringApp.class
+com\loncoto\webapps\SpringAOPv2\beans\ItextUtils.class
+com\loncoto\webapps\SpringAOPv2\beans\MyAroundAdvice.class
+com\loncoto\webapps\SpringAOPv2\beans\TextUtils.class
