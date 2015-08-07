@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+          http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util-4.0.xsd
+            http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+			default-autowire="byName">
+
+<!-- les annotations @entity etc vont etre scannées et les autres annotations de persistences -->
+<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+<bean id="dataSource"
+	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	<property name="url" value="jdbc:mysql://localhost:3306/base_MyFirtsUltimate3Tools"/>
+	<property name="username" value="root"/>
+	<property name="password" value=""/>		  
+</bean>
+
+<!-- objet spring qui va encapsuler les entity managers -->
+<bean 	id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<!-- on dit que c'est hibernate qui est fournisseur de connection de jpa -->
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+</bean>
+		
+<!--  celui qui va gerer les transactions, dans nos dao va automatiquement recuperer un entitymanager et nous fournir la transaction et commiter ou pas en base -->		
+<bean 	id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+</bean>
+
+<bean id="messageDAO" class="com.loncoto.webapps.MyFirtsUltimate3Tools.models.MessageDAO" />
+
+
+<!--  va chercher dans les annotations et pas dans le web.xml les objets que tu dois gere:m -->
+<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>
