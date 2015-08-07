@@ -24,9 +24,15 @@ public class SpringApp {
 
         ItextUtils itu = ctx.getBean("tu",  ItextUtils.class);
         System.out.println(itu.inverse("test d'inversion"));
+        System.out.println(itu.inverse("encore une inversion"));
+        System.out.println(itu.inverse("test d'inversion"));
 
         ITextSaluer its = ctx.getBean("ts", ITextSaluer.class);
         System.out.println(its.saluer("thierry"));
+        System.out.println(its.saluer("marc"));
+        System.out.println(its.saluer("cyril"));
+        System.out.println(its.saluer("antoine"));
+        System.out.println(its.saluer("marc"));
         
         
         
